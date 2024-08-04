@@ -1,6 +1,6 @@
 The  program  "jaleb.py" is  designed for analysis of multi chi-square or Fisher Test
 
-The program apply statistics corrections as Bonferroni and Yates' continuity
+The program apply statistics corrections of Bonferroni and Yates' continuity
 
 The program has only been tested on Windows and is not guaranteed to work on Linux or MacOS.
 
