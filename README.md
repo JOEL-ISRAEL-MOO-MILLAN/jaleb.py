@@ -16,3 +16,6 @@ Example:
 
 
 The data frame must be into a .xslx file (see test.xlsx)
+
+## Cite
+Moo-Millan Joel Israel (2024). 
