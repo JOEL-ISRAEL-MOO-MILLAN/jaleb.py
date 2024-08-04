@@ -4,7 +4,9 @@ The program apply statistics corrections as Bonferroni and Yates' continuity
 
 The program has only been tested on Windows and is not guaranteed to work on Linux or MacOS.
 
-For best interaction with the program must be installed: https://apps.microsoft.com/detail/9mz1snwt0n5d?hl=en-us&gl=US
+For best interaction with the program must be installed:
+
+https://apps.microsoft.com/detail/9mz1snwt0n5d?hl=en-us&gl=US
 
 The data frame must be structured and distributed as shown in this example: 
 
