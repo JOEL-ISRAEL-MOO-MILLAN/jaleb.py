@@ -7,7 +7,7 @@ The data frame must be structured and distributed as shown.
 
 Example: 
 
-        ![image](https://github.com/user-attachments/assets/c43d5d43-f852-43a2-8607-44376be9438d)
+ ![image](https://github.com/user-attachments/assets/c43d5d43-f852-43a2-8607-44376be9438d)
 
 
 The data frame must be into a .xslx file as test.xlsx
