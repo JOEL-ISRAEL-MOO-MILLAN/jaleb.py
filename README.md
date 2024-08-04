@@ -17,7 +17,7 @@ Example:
 
 The data frame must be into a .xslx file (see test.xlsx)
 
-## Cite
+## Citation
  Moo-Millan Joel I. (2024). Python and statistics: automation of data analysis.
  
  https://github.com/JOEL-ISRAEL-MOO-MILLAN/jaleb.py.git
