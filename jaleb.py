@@ -9,7 +9,7 @@ titleStyle = '\033[93m'  # Amarillo
 normalStyle = "\033[0m"  # Restaurar el estilo normal
 
 sys.stdout.write(
-    titleStyle + "\n ~~~~~~~~~~~~Jaleb (Cuniculus paca): Chi-square test of independence at multilevel~~~~~~~~~~~~" +
+    titleStyle + "\n ~~~~~~~~~~~~Jaleb (Cuniculus paca): Chi-square test of independence at multilevel~~~~~~~~~~~~" +
     "\n This program creates automatically the contingency tables for each variable" +
     "\n Each contingency table is applied a chi-square test or Fisher test" +
     "\n Bonferroni correction is applied when necessary." +
@@ -57,7 +57,7 @@ def chisq_colum(df, col_indices):
                 vertebrate_col: vertebrate_name,
                 'Test': "Fisher",
                 'p-value': test_result[1],
-                'conf_int': np.nan,
+                #'conf_int': np.nan,
                 'odds_ratio': test_result[0]
             })
         else:
@@ -87,9 +87,11 @@ def chisq_colum(df, col_indices):
                                        np.where(results_table['Adjusted p-value'] < 0.01, '**',
                                                 np.where(results_table['Adjusted p-value'] < 0.05, '*',
                                                          'NS')))
-    print(results_table)
-    print("\ngithub:https://github.com/JOEL-ISRAEL-MOO-MILLAN\nDesigned by Moo-Millan Joel Israel\n")  
-    print("\nSignif. codes: ***= 0.0001; **=0.001; *=0.01 ; 0.05=NS; 0.1=NS\n")
+    print("\n\x1b[33mResults\n\x1b[32m")                                                     
+    print(f"\n\x1b[32m{results_table}\033[37m\033[0m")
+    print("\n\x1b[33mSignif. codes: ***= 0.0001; **=0.001; *=0.01 ; 0.05=NS; 0.1=NS\n")
+    print("\ngithub:https://github.com/JOEL-ISRAEL-MOO-MILLAN\nDesigned by Moo-Millan Joel Israel\n\033[0m")  
+    
 
     # Reordenar columnas y manejar la presencia o ausencia de 'conf_int' y 'odds_ratio'
     columns_to_include = [vertebrate_col, 'Test', 'p-value', 'Adjusted p-value', 'Signif']
@@ -117,7 +119,7 @@ def chisq_colum(df, col_indices):
     return results_table, combined_contingency_tables
 
 def main():
-    input_file = input("Type the name of the excel file (without extension): ")
+    input_file = input("\033[37mType the name of the excel file (without extension): ")
     input_file += ".xlsx"
     try:
         df = pd.read_excel(input_file)
@@ -129,7 +131,7 @@ def main():
         print("El DataFrame debe tener al menos 3 columnas.")
         return
     
-    print("Las columnas disponibles en el archivo son:")
+    print("The columns in the dataframe are:")
     for i, col in enumerate(df.columns):
         print(f"{i+1}. {col}")
 
@@ -141,10 +143,10 @@ def main():
     for i in range(2):  # Pedimos dos columnas numéricas
         col_index = int(input(f"Type the number which corresponds to Numeric variable {i+1}: ")) - 1
         col_indices.append(col_index)
-
-    output_file = input("Type the name of the table of results (without extension): ") or "Chis-square results"
+    print("\n\033[36mIf you press enter in the next options the names will be generate automatically\033[37m")
+    output_file = input("\nType the name of the table of results (without extension): ") or "Chis-square or Fiser_results"
+    contingency_file = input("\nType the name of the file of the contigency table created (without extension): ") or "Contingency_tables"
     output_file += ".xlsx"
-    contingency_file = input("Type the name of the file of the contigency table created (without extension): ") or "Contingency_tables"
     contingency_file += ".xlsx"
     
     try:
@@ -157,7 +159,7 @@ def main():
             for i, col in enumerate(results_table.columns):
                 column_length = max(results_table[col].astype(str).map(len).max(), len(col)) + 2
                 worksheet.set_column(i, i, column_length)
-        print(f"Resultados guardados en {output_file}")
+        print(f"Analysis were stored at: {output_file}")
 
         # Guardar las tablas de contingencia y ajustar el ancho de las columnas
         with pd.ExcelWriter(contingency_file, engine='xlsxwriter') as writer:
@@ -166,7 +168,7 @@ def main():
             for i, col in enumerate(combined_contingency_tables.columns):
                 column_length = max(combined_contingency_tables[col].astype(str).map(len).max(), len(col)) + 2
                 worksheet.set_column(i, i, column_length)
-        print(f"Tablas de contingencia guardadas en {contingency_file}")
+        print(f"Contingency tables were stored at: {contingency_file}")
         
     except Exception as e:
         print(f"Error durante el cálculo o guardado: {e}")
@@ -174,4 +176,4 @@ def main():
 if __name__ == "__main__":
     main()
     
-input("Press Enter to exit")
+input("\n\nPress Enter to exit")
