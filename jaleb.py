@@ -9,7 +9,7 @@ titleStyle = '\033[93m'  # Amarillo
 normalStyle = "\033[0m"  # Restaurar el estilo normal
 
 sys.stdout.write(
-    titleStyle + "\n ~~~~~~~~~~~~Jaleb (Cuniculus paca): Chi-square test of independence at multilevel~~~~~~~~~~~~" +
+    titleStyle + "\n ~~~~~~~~~~~~Jaleb (Cuniculus paca): Chi-square test of independence at multilevel~~~~~~~~~~~~" +
     "\n This program creates automatically the contingency tables for each variable" +
     "\n Each contingency table is applied a chi-square test or Fisher test" +
     "\n Bonferroni correction is applied when necessary." +
